@@ -9,7 +9,6 @@
 # https://www.eia.gov/dnav/ng/ng_pri_fut_s1_d.htm
 #
 # total gas price = (price per MMBTU) * (MMBTU)
-# Will need to work with datetime for using dates (yyyymmdd)
 
 import requests, time
 import matplotlib.pyplot as plt
@@ -133,15 +132,14 @@ def main():
             pass
 
 
-
+# Historical price data here
 henry_page = "https://www.eia.gov/opendata/qb.php?sdid=NG.RNGWHHD.D"
 page = page_get(henry_page)
+# Specify time period (start is 19970107) or leave blank
 data = price_data_get(page, start = 19990101, end = 20000101)
 #data = price_data_get(page)
-##for d in data:
-##    print(d)
 
-print("avg price:", average_price(data))
+print("Average price:", average_price(data))
 
 plot_data(data)
 
